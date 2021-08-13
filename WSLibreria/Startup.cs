@@ -28,7 +28,10 @@ namespace WSLibreria
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options => {
-                options.AddPolicy(name: corsLibreria, builder => { builder.WithOrigins("*"); });
+                options.AddPolicy(name: corsLibreria, builder => {
+                    builder.WithHeaders("*");
+                    builder.WithOrigins("*"); 
+                });
             });
             services.AddControllers();
             var mapperConfig = new MapperConfiguration(m =>
